@@ -5,8 +5,8 @@ import Logo from "../components/Logo";
 const About = () => {
   return (
     <div>
-      <Logo />
       <Navigation />
+      <Logo />
       <h1>A propos</h1>
       <p>
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci,

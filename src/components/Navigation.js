@@ -1,24 +1,43 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import { Slider } from "@material-tailwind/react";
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Link from "@mui/material/Link";
+import HomeIcon from "@mui/icons-material/Home";
+import WhatshotIcon from "@mui/icons-material/Whatshot";
 
 const Navigation = () => {
   return (
-    <div className="navigation">
-      <div className="flex w-96 flex-col gap-8">
-        <Slider color="green" defaultValue={50} />
-      </div>
-      <ul>
-        <NavLink to="/" className={(nav) => (nav.isActive ? "nav-active" : "")}>
-          <li>acceuil</li>
-        </NavLink>
-        <NavLink
-          to="/about"
-          className={(nav) => (nav.isActive ? "nav-active" : "")}
+    <div>
+      <Box
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          typography: "body1",
+          "& > :not(style) ~ :not(style)": {
+            ml: 4,
+          },
+        }}
+      >
+        <Link
+          underline="hover"
+          sx={{ display: "flex", alignItems: "center" }}
+          color="inherit"
+          href="/"
         >
-          <li>à propos</li>
-        </NavLink>
-      </ul>
+          <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+          Home
+        </Link>
+
+        <Link
+          underline="hover"
+          sx={{ display: "flex", alignItems: "center" }}
+          color="inherit"
+          href="/about"
+        >
+          <WhatshotIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+          About
+        </Link>
+      </Box>
     </div>
   );
 };
