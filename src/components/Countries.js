@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Card from "./Card";
+import Box from "@mui/material/Box";
+import Slider from "@mui/material/Slider";
 
 const Countries = () => {
   const [data, setData] = useState([]);
   const [rangeValue, setRangeValue] = useState(36);
-  const [selectedRadio, setSelectedRadio] = useState("");
+  const [selectedRadio, setSelectedRadio] = useState("a");
   const radios = ["Africa", "America", "Asia", "Europe", "Oceania"];
 
   useEffect(() => {
@@ -17,13 +19,16 @@ const Countries = () => {
   return (
     <div className="countries">
       <ul className="radio-container">
-        <input
-          type="range"
-          min={1}
-          max={250}
-          defaultValue={rangeValue}
-          onChange={(e) => setRangeValue(e.target.value)}
-        />
+        <Box sx={{ width: 300 }}>
+          <Slider
+            min={1}
+            max={250}
+            defaultValue={rangeValue}
+            onChange={(e) => setRangeValue(e.target.value)}
+            color="secondary"
+          />
+        </Box>
+
         {radios.map((continent) => (
           <li>
             <input
