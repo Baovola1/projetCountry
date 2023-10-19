@@ -41,6 +41,16 @@ const Navigation = () => {
         <WhatshotIcon sx={{ mr: 0.5 }} fontSize="inherit" />
         About
       </Link>
+      <Link
+        component={RouterLink}
+        to="/blog"
+        underline="hover"
+        sx={{ display: "flex", alignItems: "center" }}
+        color="inherit"
+      >
+        <WhatshotIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+        Blog
+      </Link>
     </Box>
     //  </AppBar>
   );
