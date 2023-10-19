@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-function Article({ article }) {
+function Article({ article, onDelete }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editContent, setEditContent] = useState(""); //Pour stocker le content modifié
 
@@ -34,9 +34,23 @@ function Article({ article }) {
   };
 
   //Delete
-  const handelDelete = () => {
-    axios.delete(`http://localhost:3004/articles/${article.id}`);
-    window.location.reload(); //Ici, on recharge la page
+  //const handelDelete = () => {
+  //  axios.delete(`http://localhost:3004/articles/${article.id}`);
+  //  window.location.reload(); //Ici, on recharge la page
+  // };
+
+  const handleDelete = () => {
+    axios
+      .delete(`http://localhost:3004/articles/${article.id}`)
+      .then(() => {
+        onDelete(article.id); // Appeler la fonction onDelete pour supprimer l'article de l'affichage
+      })
+      .catch((error) => {
+        console.error(
+          "Une erreur s'est produite lors de la suppression de l'article: ",
+          error
+        );
+      });
   };
 
   return (
@@ -64,13 +78,12 @@ function Article({ article }) {
         ) : (
           <button onClick={() => setIsEditing(true)}>Edit</button>
         )}
-
         <button
           onClick={() => {
             if (
               window.confirm("êtes-vous sur de vouloir supprimer l'article?")
             ) {
-              handelDelete();
+              handleDelete();
             }
           }}
         >
