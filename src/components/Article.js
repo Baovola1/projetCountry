@@ -33,6 +33,12 @@ function Article({ article }) {
     });
   };
 
+  //Delete
+  const handelDelete = () => {
+    axios.delete(`http://localhost:3004/articles/${article.id}`);
+    window.location.reload(); //Ici, on recharge la page
+  };
+
   return (
     <div
       className="article"
@@ -59,7 +65,17 @@ function Article({ article }) {
           <button onClick={() => setIsEditing(true)}>Edit</button>
         )}
 
-        <button>Supprimer</button>
+        <button
+          onClick={() => {
+            if (
+              window.confirm("êtes-vous sur de vouloir supprimer l'article?")
+            ) {
+              handelDelete();
+            }
+          }}
+        >
+          Supprimer
+        </button>
       </div>
     </div>
   );
