@@ -34,11 +34,6 @@ function Article({ article, onDelete }) {
   };
 
   //Delete
-  //const handelDelete = () => {
-  //  axios.delete(`http://localhost:3004/articles/${article.id}`);
-  //  window.location.reload(); //Ici, on recharge la page
-  // };
-
   const handleDelete = () => {
     axios
       .delete(`http://localhost:3004/articles/${article.id}`)
