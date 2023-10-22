@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Card from "./Card";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 import Chip from "@mui/material/Chip";
 import SpeedDial from "@mui/material/SpeedDial";
 import SpeedDialIcon from "@mui/material/SpeedDialIcon";
 import SpeedDialAction from "@mui/material/SpeedDialAction";
+import Carte from "./Carte";
 
 const Countries = () => {
   const [data, setData] = useState([]);
@@ -14,6 +14,7 @@ const Countries = () => {
   //const [selectedRadio, setSelectedRadio] = useState("a");
   const radios = ["Africa", "America", "Asia", "Europe", "Oceania"];
 
+  //Ici, ne plus toucher=> ok
   const [open, setOpen] = useState(false);
   const [selectedRadio, setSelectedRadio] = useState(null);
 
@@ -61,12 +62,12 @@ const Countries = () => {
         <SpeedDial
           ariaLabel="SpeedDial basic example"
           sx={{
-            position: "relative",
-            bottom: 16,
+            position: "absolute",
+            //bottom: 16,
             left: 16,
             flexDirection: "row",
+            justifyContent: "center",
             margin: "7px",
-            height: "15vh",
           }}
           icon={<SpeedDialIcon />}
           onClose={() => setOpen(false)}
@@ -84,13 +85,13 @@ const Countries = () => {
         />
       )}
 
-      <ul>
+      <ul style={{ display: "flex", flexDirection: "row" }}>
         {data
           .filter((country) => country.continents[0].includes(selectedRadio))
           .sort((a, b) => b.population - a.population)
           .slice(0, rangeValue)
           .map((country, index) => (
-            <Card key={index} country={country} />
+            <Carte key={index} country={country} />
           ))}
       </ul>
     </div>
